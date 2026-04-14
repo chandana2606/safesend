@@ -119,9 +119,13 @@ const ConfirmPayment = () => {
 
             // Wait for return (simulated)
             setTimeout(() => {
-                setPaymentState('success');
-                playSuccessSound();
-                processBackendPayment();
+                if (isRecharge) {
+                    setPaymentState('success');
+                    playSuccessSound();
+                    processBackendPayment();
+                } else {
+                    setPaymentState('processing');
+                }
             }, 2000);
         }, 1000);
     };
@@ -243,6 +247,10 @@ const ConfirmPayment = () => {
                         </div>
                         <p className="text-secondary text-sm mb-4">
                             Money transfers automatically in 15 mins. Or confirm now.
+                            <br />
+                            <span style={{ fontSize: '12px', opacity: 0.8, display: 'block', marginTop: '8px' }}>
+                                This is used to hold the payment for 15 minutes. Within 15 minutes we can cancel the payment, but after 15 minutes we can't cancel the payment.
+                            </span>
                         </p>
 
                         <div className="flex-col gap-3">

@@ -10,7 +10,7 @@ const AudioAutoPlay = ({ name, phone, amount, playVoice }) => {
     useEffect(() => {
         if (!amount) {
             const spokenNumber = phone ? phone.split('').join(' ') : '';
-            if (name === 'Unknown Contact' || !name) {
+            if (name === 'Unknown Contact' || name === 'Unknown User' || !name) {
                 playVoice(`You are sending money to unknown contact, number ${spokenNumber}`);
             } else {
                 playVoice(`You are sending money to ${name}, number ${spokenNumber}`);
@@ -21,6 +21,11 @@ const AudioAutoPlay = ({ name, phone, amount, playVoice }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name, phone, amount]);
     return null;
+};
+
+const getGeneratedName = (phone) => {
+    const mockNames = ["Rahul Sharma", "Priya Singh", "Amit Kumar", "Neha Gupta", "Vikram Patel", "Sneha Reddy", "Arjun Das", "Pooja Verma", "Karan Malhotra", "Riya Desai"];
+    return mockNames[(parseInt(phone.slice(-4)) || 0) % mockNames.length];
 };
 
 const SendMoney = () => {
@@ -65,9 +70,9 @@ const SendMoney = () => {
             if (hasContactsPermission === false) {
                 setSelectedContact({
                     phone: query,
-                    name: 'Unknown User',
+                    name: getGeneratedName(query),
                     isNew: true,
-                    isGlobal: false
+                    isGlobal: true
                 });
                 return;
             }
@@ -91,9 +96,9 @@ const SendMoney = () => {
                     console.error("Error fetching contact:", err);
                     setSelectedContact({
                         phone: query,
-                        name: 'Unknown User',
+                        name: getGeneratedName(query),
                         isNew: true,
-                        isGlobal: false
+                        isGlobal: true
                     });
                     setIsSearching(false);
                 });
@@ -120,9 +125,9 @@ const SendMoney = () => {
             if (query.length === 10 && /^\d+$/.test(query) && !filtered.find(c => c.phone === query)) {
                 filtered.unshift({
                     phone: query,
-                    name: `Unknown User`,
+                    name: getGeneratedName(query),
                     isNew: true,
-                    isGlobal: false,
+                    isGlobal: true,
                     id: 'new-' + query
                 });
             }

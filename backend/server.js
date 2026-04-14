@@ -16,6 +16,8 @@ app.get('/api/contacts', (req, res) => {
         return res.json(null);
     }
 
+    const mockNames = ["Rahul Sharma", "Priya Singh", "Amit Kumar", "Neha Gupta", "Vikram Patel", "Sneha Reddy", "Arjun Das", "Pooja Verma", "Karan Malhotra", "Riya Desai"];
+
     db.get('SELECT * FROM contacts WHERE phone = ?', [query], (err, row) => {
         if (err) {
             console.error(err);
@@ -29,12 +31,15 @@ app.get('/api/contacts', (req, res) => {
                 duplicates: Boolean(row.duplicates)
             });
         } else {
+            const num = parseInt(query.slice(-4)) || 0;
+            const generatedName = mockNames[num % mockNames.length];
+
             res.json({
                 phone: query,
-                name: 'Unknown User',
+                name: generatedName,
                 isNew: true,
                 duplicates: false,
-                isGlobal: false
+                isGlobal: true // Simulates it being verified globally on UPI network
             });
         }
     });
