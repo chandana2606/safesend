@@ -1,0 +1,224 @@
+.jar-page {
+    background: linear-gradient(180deg, var(--color-brand-light) 0%, var(--color-bg-main) 30%);
+    min-height: 100vh;
+    padding-bottom: 24px;
+}
+
+.jar-header {
+    padding: 40px 20px 20px;
+    color: var(--color-text-primary);
+}
+
+.jar-visual-container {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+}
+
+.jar-glass.large {
+    width: 90px;
+    height: 110px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    border-radius: 15px 15px 25px 25px;
+    position: relative;
+    box-shadow:
+        inset 0 0 20px rgba(10, 88, 202, 0.1),
+        0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.jar-glass.large::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+}
+
+.coin {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.coin.c1 {
+    bottom: 10px;
+    left: 15px;
+    transform: rotate(15deg);
+}
+
+.coin.c2 {
+    bottom: 15px;
+    right: 10px;
+    transform: rotate(-10deg);
+}
+
+.coin.c3 {
+    bottom: 35px;
+    left: 25px;
+    transform: rotate(5deg);
+}
+
+.coin.c4 {
+    bottom: 50px;
+    right: 20px;
+    transform: rotate(-15deg);
+}
+
+.coin.c5 {
+    top: -40px;
+    left: 35px;
+    animation: dropCoinLarge 4s infinite ease-in;
+}
+
+@keyframes dropCoinLarge {
+    0% {
+        transform: translateY(-50px) rotate(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateY(130px) rotate(720deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(130px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.jar-header h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.jar-content {
+    padding: 0 16px;
+}
+
+.jar-balance-card {
+    text-align: center;
+    margin-top: -10px;
+}
+
+.jar-balance-card p {
+    font-size: 14px;
+}
+
+.jar-balance-card h1 {
+    font-size: 40px;
+    color: var(--color-warning);
+    margin: 8px 0;
+}
+
+.return-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(0, 184, 148, 0.1);
+    color: var(--color-success);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.progress-section {
+    text-align: left;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.progress-bar-bg {
+    height: 8px;
+    background-color: var(--color-bg-input);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-brand), var(--color-warning));
+    border-radius: 4px;
+    transition: width 1s ease-out;
+}
+
+.jar-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.withdraw-btn {
+    background: linear-gradient(135deg, var(--color-warning), #e67e22) !important;
+}
+
+.transactions-mini h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.t-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-bg-input);
+}
+
+.t-row:last-child {
+    border-bottom: none;
+}
+
+.t-desc {
+    font-size: 13px;
+    color: var(--color-text-primary);
+}
+
+.t-amt {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-success);
+}
+
+.ml-auto {
+    margin-left: auto;
+}

@@ -1,0 +1,101 @@
+.security-settings-page {
+    background-color: var(--color-bg-main);
+    min-height: 100vh;
+    padding-bottom: 24px;
+}
+
+.security-content {
+    padding: 16px;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+}
+
+.status-header h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.status-header p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.setting-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.setting-info {
+    flex: 1;
+}
+
+.setting-info h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.setting-info p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.chevron {
+    font-size: 24px;
+    color: var(--color-text-muted);
+    transition: transform 0.2s;
+}
+
+.chevron.rotate {
+    transform: rotate(90deg);
+}
+
+.pin-change-form {
+    margin-top: 8px;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.pin-change-form .input-group {
+    margin-bottom: 16px;
+}
+
+.pin-change-form label {
+    display: block;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 6px;
+}
+
+.pin-change-form input {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-bg-input);
+    border-radius: 12px;
+    font-size: 16px;
+    letter-spacing: 4px;
+}
+
+.privacy-tips h3 {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tip-item {
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    border-left: 4px solid var(--color-brand);
+}

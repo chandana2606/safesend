@@ -1,0 +1,34 @@
+/* App specific styles, global are in index.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 70px;
+  /* Space for bottom nav */
+}
+
+/* Hide scrollbar for clean app feel */
+.content-area::-webkit-scrollbar {
+  display: none;
+}
+
+.content-area {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Common Card style */
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}

@@ -1,0 +1,160 @@
+.profile-page {
+    background-color: var(--color-bg-main);
+    min-height: 100vh;
+    padding-bottom: 24px;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, var(--color-brand-dark), var(--color-brand));
+    padding: 20px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin-top: -70px;
+    padding-top: 90px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+}
+
+.icon-btn.dark {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.profile-avatar-large {
+    width: 90px;
+    height: 90px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-header h2 {
+    color: white;
+    margin-bottom: 4px;
+}
+
+.profile-header p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.upi-id-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+}
+
+.upi-id-box:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.upi-id-box:active {
+    opacity: 0.8;
+}
+
+.kyc-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--color-success);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.profile-content {
+    padding: 24px 16px;
+    margin-top: -20px;
+}
+
+.settings-group {
+    margin-bottom: 16px;
+    padding: 16px;
+}
+
+.settings-group h3 {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-bg-input);
+    cursor: pointer;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.setting-icon-bg {
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-bg-input);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.setting-details {
+    flex: 1;
+}
+
+.setting-details h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.setting-details p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px;
+    color: var(--color-danger);
+    font-weight: 600;
+    font-size: 16px;
+    transition: opacity 0.2s;
+}
+
+.logout-btn:active {
+    opacity: 0.7;
+}
+
+.app-version {
+    text-align: center;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 24px;
+}

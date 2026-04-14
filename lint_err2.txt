@@ -1,0 +1,13 @@
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\pages\ConfirmPayment.jsx
+  31:5  error  React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\pages\Home.jsx
+  2:10  error  'useNavigate' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\pages\SendMoney.jsx
+  24:9  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/rules-of-hooks' or 'react-hooks/set-state-in-effect')
+
+✖ 3 problems (2 errors, 1 warning)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+

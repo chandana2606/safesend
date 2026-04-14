@@ -1,0 +1,36 @@
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\context\AppContext.jsx
+  39:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\pages\ConfirmPayment.jsx
+  21:45  error    React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render                       react-hooks/rules-of-hooks
+  22:39  error    React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render                       react-hooks/rules-of-hooks
+  23:51  error    React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render                       react-hooks/rules-of-hooks
+  25:5   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render                      react-hooks/rules-of-hooks
+  41:8   warning  React Hook useEffect has missing dependencies: 'handleFinalizePayment' and 'timerIntervalId'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\pages\Home.jsx
+  12:11  error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\pages\ScanAndPay.jsx
+  34:14  error  'error' is defined but never used  no-unused-vars
+
+C:\Users\DELL\OneDrive\Desktop\dti\src\pages\SendMoney.jsx
+  26:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  24 |         // Simple mock search simulation
+  25 |         if (query.length >= 10 && MOCK_CONTACTS[query]) {
+> 26 |             setSelectedContact({ phone: query, ...MOCK_CONTACTS[query] });
+     |             ^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  27 |         } else if (query.length >= 10) {
+  28 |             // Unknown new number
+  29 |             setSelectedContact({ phone: query, name: 'Unknown Contact', isNew: true, duplicates: false });  react-hooks/set-state-in-effect
+
+✖ 9 problems (8 errors, 1 warning)
+

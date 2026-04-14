@@ -1,0 +1,147 @@
+.bills-page {
+    padding-bottom: 20px;
+}
+
+.bills-content {
+    padding: 16px;
+}
+
+.my-bills {
+    margin-bottom: 24px;
+}
+
+.pending-bill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0 0 0;
+}
+
+.pb-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-input);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pb-details {
+    flex: 1;
+}
+
+.pb-details h4 {
+    font-size: 15px;
+    margin-bottom: 2px;
+    color: var(--color-text-primary);
+}
+
+.pb-details p {
+    font-size: 12px;
+    color: var(--color-danger);
+    font-weight: 500;
+}
+
+.pay-small-btn {
+    background-color: var(--color-brand);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.bills-content>h3 {
+    font-size: 16px;
+    margin-left: 4px;
+    margin-bottom: 12px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 12px;
+    padding: 24px 16px;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.category-item:active {
+    transform: scale(0.95);
+}
+
+.cat-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-item span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.center-modal {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 360px;
+    padding: 24px 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bill-amt-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--color-bg-input);
+    border-radius: var(--radius-md);
+}
+
+.bill-amt-display span {
+    font-size: 32px;
+    color: var(--color-brand);
+}
+
+.full-width {
+    width: 100%;
+}

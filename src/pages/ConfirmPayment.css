@@ -1,0 +1,364 @@
+.confirm-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.4s ease;
+}
+
+.bg-confirm {
+    background-color: var(--color-bg-main);
+}
+
+.bg-processing {
+    background-color: #1e1e2d;
+    color: white;
+}
+
+.bg-success {
+    background-color: var(--color-success);
+    color: white;
+}
+
+.transparent {
+    background: transparent !important;
+    border: none !important;
+}
+
+.safe-shield-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 8px;
+}
+
+.safe-shield-header h2 {
+    font-size: 20px;
+    color: var(--color-success);
+}
+
+.payment-summary {
+    margin: 0 16px 24px 16px;
+}
+
+.payment-summary h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 15px;
+}
+
+.summary-row .label {
+    color: var(--color-text-secondary);
+}
+
+.summary-row .value {
+    color: var(--color-text-primary);
+    text-align: right;
+}
+
+.summary-row .value.strong {
+    font-weight: 600;
+}
+
+.divider {
+    border: none;
+    border-top: 1px dashed var(--color-text-muted);
+    margin: 12px 0;
+}
+
+.divider.thick {
+    border-top: 2px solid var(--color-bg-input);
+}
+
+.jar-row .label,
+.jar-row .value {
+    color: var(--color-brand);
+    font-weight: 500;
+}
+
+.total-row {
+    margin-top: 8px;
+}
+
+.total-row .label {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-text-primary);
+}
+
+.grand-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary) !important;
+}
+
+.security-notice {
+    text-align: center;
+    padding: 0 32px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.two-btns {
+    display: flex;
+    gap: 12px;
+}
+
+.two-btns button {
+    flex: 1;
+}
+
+/* Processing View */
+.processing-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 20px 40px 20px;
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.loader-container h2 {
+    color: white;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.loader-container p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.undo-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: 100%;
+}
+
+.undo-container h3 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+.undo-container p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.timer-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--color-danger);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: white;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Success View */
+.success-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.success-icon-wrap {
+    margin-bottom: 24px;
+    animation: pulse-ring 2s infinite;
+    border-radius: 50%;
+}
+
+.success-title {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.success-msg {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.btn-white {
+    background: white;
+    color: var(--color-success);
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.btn-white-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Utility classes for new layout */
+.text-success {
+    color: var(--color-success) !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.text-black {
+    color: black !important;
+}
+
+.opacity-8 {
+    opacity: 0.8 !important;
+}
+
+.text-sm {
+    font-size: 13px !important;
+}
+
+.mb-2 {
+    margin-bottom: 8px !important;
+}
+
+.mb-4 {
+    margin-bottom: 16px !important;
+}
+
+.mr-2 {
+    margin-right: 8px !important;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.gap-3 {
+    gap: 12px;
+}
+
+.confirm-page.bg-confirm {
+    background-color: #1e1e2d;
+}
+
+.upi-apps-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.upi-app-card {
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    padding: 24px 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upi-app-card:active {
+    transform: scale(0.95);
+    background: #e9ecef;
+}
+
+.app-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
+
+.app-icon.gpay {
+    background: linear-gradient(135deg, #4285f4, #34a853);
+}
+
+.app-icon.phonepe {
+    background: #5f259f;
+}
+
+.app-icon.paytm {
+    background: #00baf2;
+}
+
+.app-icon.other {
+    background: #333;
+}
+
+.upi-app-card span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}

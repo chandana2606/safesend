@@ -1,0 +1,26 @@
+.history-page {
+    min-height: 100vh;
+    background-color: var(--color-bg-main);
+}
+
+.history-content {
+    padding: 16px;
+}
+
+.mt-4 {
+    margin-top: 16px;
+}
+
+.text-white {
+    color: white;
+}
+
+.icon-btn.dark {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.text-muted {
+    color: var(--color-text-muted) !important;
+    text-decoration: line-through;
+}
