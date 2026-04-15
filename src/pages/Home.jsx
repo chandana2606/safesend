@@ -89,7 +89,7 @@ const Home = () => {
                         </div>
                         <span>To Contact</span>
                     </Link>
-                    <Link to="/send" className="action-item blue-white">
+                    <Link to="/send" state={{ mode: 'bank' }} className="action-item blue-white">
                         <div className="action-icon-wrapper">
                             <Building size={24} color="var(--color-brand)" />
                         </div>

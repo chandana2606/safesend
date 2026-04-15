@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ArrowLeft, Search, AlertTriangle, User, Mic } from 'lucide-react';
+import { ArrowLeft, Search, AlertTriangle, User, Mic, Building } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import './SendMoney.css';
 
@@ -33,6 +33,8 @@ const SendMoney = () => {
     const location = useLocation();
     const { playVoice } = useAppContext();
     const [step, setStep] = useState(1); // 1: Search, 2: Amount
+    const initialMode = location.state?.mode || 'contact';
+    const [mode] = useState(initialMode);
     const [query, setQuery] = useState(location.state?.scannedData || '');
     const [selectedContact, setSelectedContact] = useState(null);
     const [isSearching, setIsSearching] = useState(false);
@@ -65,7 +67,14 @@ const SendMoney = () => {
 
     useEffect(() => {
         // Exact match logic
-        if (query.length === 10 && /^\d+$/.test(query)) {
+        if (mode === 'bank') {
+            if (query.length >= 9 && /^\d+$/.test(query)) {
+                setSelectedContact({ phone: query, name: 'Bank Account Transfer', isNew: true, isGlobal: true });
+                setIsSearching(false);
+            } else {
+                setSelectedContact(null);
+            }
+        } else if (query.length === 10 && /^\d+$/.test(query)) {
             // Check permission before automatic lookup wrapper
             if (hasContactsPermission === false) {
                 setSelectedContact({
@@ -112,7 +121,9 @@ const SendMoney = () => {
         }
 
         // Filtering suggested list logic
-        if (query.trim() === '') {
+        if (mode === 'bank') {
+            setFilteredContacts([]);
+        } else if (query.trim() === '') {
             setFilteredContacts(allContacts);
         } else {
             const lowerQuery = query.toLowerCase();
@@ -169,22 +180,23 @@ const SendMoney = () => {
                 <button className="icon-btn" onClick={() => step === 1 ? navigate(-1) : setStep(1)}>
                     <ArrowLeft size={24} />
                 </button>
-                <h2>{step === 1 ? 'Send Money' : 'Enter Amount'}</h2>
+                <h2>{step === 1 ? (mode === 'bank' ? 'Send to Bank Account' : 'Send Money') : 'Enter Amount'}</h2>
             </header>
 
             {step === 1 && (
                 <div className="step-content animate-slide-up">
                     <div className="search-bar card">
-                        <Search size={20} color="var(--color-text-muted)" />
+                        {mode === 'bank' ? <Building size={20} color="var(--color-text-muted)" /> : <Search size={20} color="var(--color-text-muted)" />}
                         <input
                             type="text"
-                            placeholder="Enter Phone Number or UPI ID"
+                            placeholder={mode === 'bank' ? "Enter Bank Account Number" : "Enter Phone Number or UPI ID"}
                             value={query}
                             onChange={(e) => {
                                 const val = e.target.value;
-                                // If it's purely numeric, limit to 10 digits
-                                if (/^\d+$/.test(val) && val.length > 10) {
-                                    return;
+                                // Limit based on mode
+                                if (/^\d+$/.test(val)) {
+                                    if (mode === 'contact' && val.length > 10) return;
+                                    if (mode === 'bank' && val.length > 18) return;
                                 }
 
                                 if (val.length > query.length) {
@@ -199,9 +211,9 @@ const SendMoney = () => {
                         />
                     </div>
 
-                    <p className="hint-text">Try: 9876543210 (Known) or 8888888888 (New)</p>
+                    <p className="hint-text">{mode === 'bank' ? "Enter a 9-18 digit account number" : "Try: 9876543210 (Known) or 8888888888 (New)"}</p>
 
-                    {hasContactsPermission === null && (
+                    {mode === 'contact' && hasContactsPermission === null && (
                         <div className="permission-prompt card mb-4 animate-fade-in" style={{ backgroundColor: 'var(--color-bg-input)', border: '1px solid var(--color-brand)' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                 <User size={24} color="var(--color-brand)" />
@@ -214,7 +226,7 @@ const SendMoney = () => {
                             </div>
                         </div>
                     )}
-                    {hasContactsPermission === false && (
+                    {mode === 'contact' && hasContactsPermission === false && (
                         <div className="alert-box mb-4" style={{ backgroundColor: '#fff3cd', color: '#856404', border: '1px solid #ffeeba', borderRadius: '8px', padding: '12px', fontSize: '13px' }}>
                             Enable contacts permission in settings to automatically display receiver name.
                         </div>
@@ -261,7 +273,7 @@ const SendMoney = () => {
                         </div>
                     )}
 
-                    {!selectedContact && !isSearching && (
+                    {mode === 'contact' && !selectedContact && !isSearching && (
                         <div className="suggested-contacts-section mt-4">
                             <h3 className="section-title">{query ? 'Search Results' : 'Recents & Contacts'}</h3>
                             <div className="contacts-list">
