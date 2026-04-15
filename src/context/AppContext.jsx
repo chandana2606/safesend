@@ -19,6 +19,11 @@ export const AppProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(() => JSON.parse(localStorage.getItem('isLoggedIn')) || false);
     const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
 
+    // Transactions state
+    const [transactions, setTransactions] = useState(() => {
+        const saved = localStorage.getItem('transactions');
+        return saved ? JSON.parse(saved) : [];
+    });
 
     // Bank state
     const [banks, setBanks] = useState(() => JSON.parse(localStorage.getItem('banks')) || [
@@ -43,7 +48,8 @@ export const AppProvider = ({ children }) => {
         localStorage.setItem('security', JSON.stringify(security));
         localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
         localStorage.setItem('user', JSON.stringify(user));
-    }, [balance, jarBalance, voiceEnabled, banks, security, isLoggedIn, user]);
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+    }, [balance, jarBalance, voiceEnabled, banks, security, isLoggedIn, user, transactions]);
 
     useEffect(() => {
         if (!('speechSynthesis' in window)) return;
@@ -97,6 +103,10 @@ export const AppProvider = ({ children }) => {
             return true;
         }
         return false;
+    };
+
+    const addTransaction = (tx) => {
+        setTransactions(prev => [{ ...tx, timestamp: new Date().toISOString(), id: Date.now() }, ...prev]);
     };
 
     const login = (userData) => {
@@ -168,7 +178,9 @@ export const AppProvider = ({ children }) => {
             isLoggedIn,
             login,
             logout,
-            user
+            user,
+            transactions,
+            addTransaction
         }}>
             {children}
         </AppContext.Provider>

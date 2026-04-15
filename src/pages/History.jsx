@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import React from 'react';
+import { ArrowLeft, Inbox } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../context/AppContext';
 import './History.css';
 
 const History = () => {
     const navigate = useNavigate();
-    const [transactions, setTransactions] = useState([]);
-
-    useEffect(() => {
-        fetch('/api/transactions')
-            .then(res => res.json())
-            .then(data => {
-                setTransactions(data);
-            })
-            .catch(err => console.error(err));
-    }, []);
+    const { transactions } = useAppContext();
 
     const formatDate = (dateString) => {
         const d = new Date(dateString);
-        return d.toLocaleString();
+        return d.toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
     };
 
     return (
@@ -32,20 +24,32 @@ const History = () => {
 
             <div className="history-content">
                 <div className="transaction-list mt-4">
-                    {transactions.map(tx => (
-                        <div key={tx.id} className="transaction-item card">
-                            <div className={`tx-icon tx-success`}>
-                                {tx.contactPhone.charAt(0)}
-                            </div>
-                            <div className="tx-details">
-                                <h4>{tx.contactPhone}</h4>
-                                <p>{formatDate(tx.timestamp)} • Paid</p>
-                            </div>
-                            <span className={`tx-amount negative`}>
-                                -₹{tx.amount}
-                            </span>
+                    {transactions.length === 0 ? (
+                        <div className="text-center mt-8 text-secondary flex-col align-center">
+                            <Inbox size={48} className="mx-auto mb-4 opacity-5" />
+                            <p>No recent transactions</p>
                         </div>
-                    ))}
+                    ) : (
+                        transactions.map(tx => {
+                            const name = tx.contact?.name || tx.contactPhone || 'Unknown';
+                            const initial = name.charAt(0).toUpperCase();
+
+                            return (
+                                <div key={tx.id} className="transaction-item card">
+                                    <div className={`tx-icon tx-success`}>
+                                        {initial}
+                                    </div>
+                                    <div className="tx-details">
+                                        <h4>{name}</h4>
+                                        <p>{formatDate(tx.timestamp)} • Paid</p>
+                                    </div>
+                                    <span className={`tx-amount negative`}>
+                                        -₹{(tx.amount + (tx.roundOffAmt || 0)).toFixed(2)}
+                                    </span>
+                                </div>
+                            );
+                        })
+                    )}
                 </div>
             </div>
         </div>

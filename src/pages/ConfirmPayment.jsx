@@ -8,7 +8,7 @@ import './ConfirmPayment.css';
 const ConfirmPayment = () => {
     const { state } = useLocation();
     const navigate = useNavigate();
-    const { deductBalance, addBalance, balance, playVoice, voiceEnabled, playSuccessSound, security } = useAppContext();
+    const { deductBalance, addBalance, balance, playVoice, voiceEnabled, playSuccessSound, security, addTransaction } = useAppContext();
 
     const [paymentState, setPaymentState] = useState('require_pin'); // require_pin -> processing -> success
     const [countdown, setCountdown] = useState(900); // 15 minutes hold
@@ -51,16 +51,8 @@ const ConfirmPayment = () => {
     const { contact, amount, roundOffAmt, isRecharge } = state;
     const totalAmount = amount + roundOffAmt;
 
-    const processBackendPayment = async () => {
-        try {
-            await fetch('/api/pay', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contact, amount, roundOffAmt })
-            });
-        } catch (error) {
-            console.error('Failed to record transaction to backend:', error);
-        }
+    const processBackendPayment = () => {
+        addTransaction({ contact, amount, roundOffAmt, status: 'Completed' });
     };
 
     const handlePinSubmit = () => {
